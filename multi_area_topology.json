@@ -1,0 +1,142 @@
+{
+  "topology_metadata": {
+    "name": "Multi_Area_OSPF_Network",
+    "type": "multi_area",
+    "total_areas": 3,
+    "ospf_process_id": 30
+  },
+  "areas": {
+    "0": {
+      "type": "backbone",
+      "description": "OSPF Backbone Area"
+    },
+    "1": {
+      "type": "standard", 
+      "description": "Area 1 - R1 LAN",
+      "abr_routers": ["R1"]
+    },
+    "2": {
+      "type": "standard",
+      "description": "Area 2 - R3-R4 Network", 
+      "abr_routers": ["R3"]
+    }
+  },
+  "routers": {
+    "R1": {
+      "router_id": "192.168.0.173",
+      "hostname": "R1",
+      "router_type": "abr",
+      "interfaces": {
+        "GigabitEthernet0/0": {
+          "ip_address": "192.168.0.1",
+          "network": "192.168.0.0/25",
+          "cost": 1,
+          "area": 1,
+          "connected_to": null
+        },
+        "GigabitEthernet0/1": {
+          "ip_address": "192.168.0.173", 
+          "network": "192.168.0.172/30",
+          "cost": 1,
+          "area": 0,
+          "connected_to": {
+            "router": "R2",
+            "ip": "192.168.0.174"
+          }
+        }
+      }
+    },
+    "R2": {
+      "router_id": "192.168.0.177",
+      "hostname": "R2", 
+      "router_type": "internal",
+      "interfaces": {
+        "GigabitEthernet0/0": {
+          "ip_address": "192.168.0.129",
+          "network": "192.168.0.128/27",
+          "cost": 1,
+          "area": 0,
+          "connected_to": null
+        },
+        "GigabitEthernet0/1": {
+          "ip_address": "192.168.0.174",
+          "network": "192.168.0.172/30", 
+          "cost": 1,
+          "area": 0,
+          "connected_to": {
+            "router": "R1",
+            "ip": "192.168.0.173"
+          }
+        },
+        "GigabitEthernet0/2": {
+          "ip_address": "192.168.0.177",
+          "network": "192.168.0.176/30",
+          "cost": 1,
+          "area": 0,
+          "connected_to": {
+            "router": "R3",
+            "ip": "192.168.0.178"
+          }
+        }
+      }
+    },
+    "R3": {
+      "router_id": "192.168.0.181",
+      "hostname": "R3",
+      "router_type": "abr", 
+      "interfaces": {
+        "GigabitEthernet0/1": {
+          "ip_address": "192.168.0.178",
+          "network": "192.168.0.176/30",
+          "cost": 1,
+          "area": 0,
+          "connected_to": {
+            "router": "R2",
+            "ip": "192.168.0.177"
+          }
+        },
+        "GigabitEthernet0/0": {
+          "ip_address": "192.168.0.161",
+          "network": "192.168.0.160/29",
+          "cost": 1,
+          "area": 2,
+          "connected_to": null
+        },
+        "GigabitEthernet0/2": {
+          "ip_address": "192.168.0.181",
+          "network": "192.168.0.180/30", 
+          "cost": 1,
+          "area": 2,
+          "connected_to": {
+            "router": "R4", 
+            "ip": "192.168.0.182"
+          }
+        }
+      }
+    },
+    "R4": {
+      "router_id": "192.168.0.182",
+      "hostname": "R4",
+      "router_type": "internal",
+      "interfaces": {
+        "GigabitEthernet0/1": {
+          "ip_address": "192.168.0.169",
+          "network": "192.168.0.168/30",
+          "cost": 1, 
+          "area": 2,
+          "connected_to": null
+        },
+        "GigabitEthernet0/0": {
+          "ip_address": "192.168.0.182",
+          "network": "192.168.0.180/30",
+          "cost": 1,
+          "area": 2,
+          "connected_to": {
+            "router": "R3",
+            "ip": "192.168.0.181"
+          }
+        }
+      }
+    }
+  }
+}

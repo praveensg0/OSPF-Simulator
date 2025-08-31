@@ -1,0 +1,152 @@
+{
+  "topology_metadata": {
+    "name": "Single_Area_Ring_OSPF_Network",
+    "type": "single_area_ring",
+    "total_areas": 1,
+    "ospf_process_id": 1
+  },
+  "areas": {
+    "1": {
+      "type": "standard",
+      "description": "OSPF Area 1 - Ring Topology"
+    }
+  },
+  "routers": {
+    "Router1": {
+      "router_id": "192.168.1.1",
+      "hostname": "Router1",
+      "router_type": "internal",
+      "interfaces": {
+        "FastEthernet0/0": {
+          "ip_address": "192.168.1.1",
+          "network": "192.168.1.0/24",
+          "cost": 1,
+          "area": 1,
+          "connected_to": null
+        },
+        "Serial2/0": {
+          "ip_address": "13.0.0.1",
+          "network": "13.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router2",
+            "ip": "13.0.0.2"
+          }
+        },
+        "Serial3/0": {
+          "ip_address": "12.0.0.1",
+          "network": "12.0.0.0/8", 
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router4",
+            "ip": "12.0.0.2"
+          }
+        }
+      }
+    },
+    "Router2": {
+      "router_id": "192.168.2.1",
+      "hostname": "Router2",
+      "router_type": "internal",
+      "interfaces": {
+        "FastEthernet0/0": {
+          "ip_address": "192.168.2.1",
+          "network": "192.168.2.0/24",
+          "cost": 1,
+          "area": 1,
+          "connected_to": null
+        },
+        "Serial2/0": {
+          "ip_address": "13.0.0.2",
+          "network": "13.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router1",
+            "ip": "13.0.0.1"
+          }
+        },
+        "Serial3/0": {
+          "ip_address": "10.0.0.1",
+          "network": "10.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router3",
+            "ip": "10.0.0.2"
+          }
+        }
+      }
+    },
+    "Router3": {
+      "router_id": "192.168.3.1", 
+      "hostname": "Router3",
+      "router_type": "internal",
+      "interfaces": {
+        "FastEthernet0/0": {
+          "ip_address": "192.168.3.1",
+          "network": "192.168.3.0/24",
+          "cost": 1,
+          "area": 1,
+          "connected_to": null
+        },
+        "Serial2/0": {
+          "ip_address": "11.0.0.1",
+          "network": "11.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router4",
+            "ip": "11.0.0.2"
+          }
+        },
+        "Serial3/0": {
+          "ip_address": "10.0.0.2",
+          "network": "10.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router2", 
+            "ip": "10.0.0.1"
+          }
+        }
+      }
+    },
+    "Router4": {
+      "router_id": "192.168.4.1",
+      "hostname": "Router4", 
+      "router_type": "internal",
+      "interfaces": {
+        "FastEthernet0/0": {
+          "ip_address": "192.168.4.1",
+          "network": "192.168.4.0/24",
+          "cost": 1,
+          "area": 1,
+          "connected_to": null
+        },
+        "Serial2/0": {
+          "ip_address": "12.0.0.2",
+          "network": "12.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router1",
+            "ip": "12.0.0.1"
+          }
+        },
+        "Serial3/0": {
+          "ip_address": "11.0.0.2",
+          "network": "11.0.0.0/8",
+          "cost": 64,
+          "area": 1,
+          "connected_to": {
+            "router": "Router3",
+            "ip": "11.0.0.1"
+          }
+        }
+      }
+    }
+  }
+}

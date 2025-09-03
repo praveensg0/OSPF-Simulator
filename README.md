@@ -2,6 +2,10 @@
 
 An interactive Python tool to parse OSPF topologies from JSON, build an undirected graph, run Dijkstra with equal-cost multipath (ECMP), print Cisco-style routing tables, and visualize the network graphically. Ships with three example topologies: single-area triangle, single-area ring, and multi-area with ABRs.
 
+
+# [Git Repo](https://github.com/praveensg0/OSPF-Simulator)
+
+
 ## Features
 - Load topology from JSON (routers, interfaces, areas)
 - Auto-detect topology type: single_area, single_area_ring, or multi_area
@@ -14,7 +18,7 @@ An interactive Python tool to parse OSPF topologies from JSON, build an undirect
 ## Quick start
 1. Clone and enter the repo:
 ```
-   git clone https://https://github.com/praveensg0/OSPF-Simulator.git
+   git clone https://github.com/praveensg0/OSPF-Simulator.git
    cd OSPF-Simulator
 ```
 
